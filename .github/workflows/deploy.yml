@@ -26,9 +26,11 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          # Set this repo secret (Settings > Secrets and variables > Actions)
-          # to your real GA4 Measurement ID before relying on this workflow.
-          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+          # A GA4 Measurement ID isn't sensitive (it's visible in every
+          # visitor's page source), so this is a repo VARIABLE, not a
+          # secret. Set it under Settings > Secrets and variables >
+          # Actions > Variables tab before relying on this workflow.
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

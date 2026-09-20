@@ -126,8 +126,10 @@ at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). It runs
 1. Push this folder to a GitHub repo (if it's nested inside a larger repo,
    move `.github/workflows/deploy.yml` to that repo's root first — GitHub
    only looks for workflows there).
-2. In the repo: **Settings → Secrets and variables → Actions** → add a
-   repository secret named `NEXT_PUBLIC_GA_MEASUREMENT_ID` with your real ID.
+2. In the repo: **Settings → Secrets and variables → Actions → Variables tab**
+   → add a repository *variable* (not a secret — a Measurement ID isn't
+   sensitive, it's visible in every visitor's page source anyway) named
+   `NEXT_PUBLIC_GA_MEASUREMENT_ID` with your real ID.
 3. **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 4. Push to `main` — the workflow builds and deploys automatically.
 
