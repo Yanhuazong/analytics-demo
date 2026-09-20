@@ -30,7 +30,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           not exist". Mounting these first guarantees the array (and the
           initial gtag('config', ...) call) exists before any page code runs.
         */}
-        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+        {/*
+          debugMode routes every hit into GA4 DebugView automatically, no
+          browser extension required. This is a classroom demo site where
+          being able to inspect events live is the whole point, so it's
+          left on unconditionally — for a real production site you'd want
+          this off (or gated behind an env var) so regular visitor traffic
+          doesn't all get flagged as debug traffic.
+        */}
+        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} debugMode />
         <Suspense fallback={null}>
           <GAPageViewTracker />
         </Suspense>
